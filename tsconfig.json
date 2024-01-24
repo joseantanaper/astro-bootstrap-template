@@ -1,12 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@layouts/*": ["./src/layouts/*"],
-      "@components/*": ["./src/components/*"],
-      "@style/*": ["./src/style/*"],
+      "@/*": ["./*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@components/*": ["src/components/*"],
+      "@style/*": ["src/style/*"],
       "@bootstrap-scss/*": ["./node_modules/bootstrap/scss/bootstrap"],
       "@bootstrap-icons-svg/*": [
         "./node_modules/bootstrap-icons/bootstrap-icons.svg"
