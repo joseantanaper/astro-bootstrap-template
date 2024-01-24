@@ -2,6 +2,28 @@
 
 ```sh
 npm create astro@latest -- --template basics
+npm install
+```
+
+## Add Sass + Bootstrap
+
+```sh
+npm install -D sass
+npm install bootstrap@latest
+npm install bootstrap-icons
+```
+
+## ESLint support
+```sh
+npm install --save-dev eslint eslint-plugin-astro
+npm install --save-dev @typescript-eslint/parser
+npm install --save-dev eslint-plugin-jsx-a11y
+npx eslint --init
+```
+
+## Prettier support
+```sh
+npm i --save-dev prettier-plugin-astro prettier
 ```
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
