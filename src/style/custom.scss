@@ -1,0 +1,106 @@
+// Bootstrap SCSS Variable overrides...
+@import 'variables-bootstrap.scss';
+
+@import '@bootstrap-scss/bootstrap.scss';
+
+@import 'variables-app.scss';
+
+// :root,
+// html,
+// body {
+//   background: black;
+//   color: white;
+// }
+
+
+html {
+  display: none;
+  margin: 0;
+  padding: 0;
+  // opacity: 0;
+}
+
+// body {}
+
+html[data-bs-theme='light'],
+html[data-bs-theme='dark'],
+html[data-bs-theme='auto'] {
+  display: block;
+  // transition: 5000ms;
+  // opacity: 1;
+}
+
+nav#app-navbar {
+  min-height: 3.5rem;
+  height: 3.5rem;
+}
+
+nav#app-subnavbar {
+  margin-top: 3.5rem !important;
+  min-height: 3.5rem;
+  height: 3.5rem;
+  margin-top: 3.5rem;
+}
+
+main {
+  // border: 20px solid red;
+  padding: 1.25rem 1.25rem 1.25rem 2rem;
+}
+
+a,
+button {
+  min-width: 3rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  svg {
+    margin-top: -$app-icon-text-margin;
+    // filter: drop-shadow(0 0.06rem 0 rgba(0 0 0 / 0.1));
+    // opacity: 0.6;
+    // margin-right: $app-icon-text-margin*7;
+  }
+
+  // span {
+  //   text-shadow: 0 0.06rem 0 rgba(0 0 0 / 0.1);
+  //   opacity: 0.8;
+  // }
+
+}
+
+a:disabled,
+a.disabled,
+button:disabled,
+button.disabled {
+  opacity: 0.4 !important;
+}
+
+// a:hover,
+// button:hover {
+//   svg {
+//     filter: drop-shadow(0 0.06rem 0 rgba(0 0 0 / 0.2)) drop-shadow(0 0 0.1rem white);
+//     opacity: 1;
+//   }
+
+//   span {
+//     // text-shadow: 0 0.06rem 0 rgba(0 0 0 / 0.2),
+//     //   0 0 0.1rem white;
+//     opacity: 0.9;
+//   }
+
+
+// }
+
+// a:active,
+// button:active {
+//   span {
+//     // text-shadow: 0 0.06rem 0 rgba(0 0 0 / 0.2),
+//     //   0 0 0.2rem white;
+//     opacity: 1;
+//   }
+// }
+
+.btn-group.app-btn-group-separated {
+  .btn+.btn {
+    margin-left: 0.03rem !important;
+  }
+}

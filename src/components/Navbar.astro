@@ -1,0 +1,122 @@
+---
+import ThemeSelector from '@components/widgets/ThemeSelector.astro'
+const base = import.meta.env.BASE_URL
+//const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
+const pathname = new URL(Astro.url).pathname
+  .replace(base, '')
+  .replace(/\/+$/, '')
+const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
+interface Props {
+  title?: string
+}
+const { title } = Astro.props
+---
+
+<header>
+  <nav
+    id="app-navbar"
+    class="navbar border-bottom navbar-expand-lg fixed-top bg-body-tertiary"
+  >
+    <div class="container-fluid flex-nowrap">
+      <!-- <button class="btn btn-danger me-3">#</button> -->
+
+      <button
+        class="btn btn-primary me-3"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasResponsive"
+        aria-controls="offcanvasResponsive">#</button
+      >
+
+      <a class="navbar-brand" href="#">
+        {title}
+      </a>
+
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="app-div-navbar"
+      >
+        <ul class="navbar-nav">
+          <div class="vr mx-3"></div>
+
+          <li class="nav-item">
+            <div class="btn-group">
+              <a
+                href=`${base}/`
+                class=`btn ${currentPath === '' ? 'btn-secondary' : ''}`
+                ><span>/</span></a
+              >
+              <a
+                href=`${base}/home`
+                class=`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`
+                ><span>Home</span></a
+              >
+              <a
+                href=`${base}/about`
+                class=`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`
+                ><span>About</span></a
+              >
+            </div>
+          </li>
+
+          <div class="vr mx-3"></div>
+
+          <li class="nav-item">
+            <ThemeSelector label={true} />
+          </li>
+
+          <!-- <div class="vr mx-3"></div> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div
+    class="offcanvas offcanvas-start h-100"
+    tabindex="-1"
+    id="offcanvasResponsive"
+    aria-labelledby="offcanvasResponsiveLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">
+        Responsive offcanvas
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        data-bs-target="#offcanvasResponsive"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p class="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+    </div>
+  </div>
+</header>
+
+<script>
+  console.log('Navbar')
+
+  document.addEventListener('astro:before-preparation', () => {
+    console.log('Navbar:astro:before-preparation')
+  })
+  document.addEventListener('astro:after-preparation', () => {
+    console.log('Navbar:astro:after-preparation')
+  })
+  document.addEventListener('astro:before-swap', () => {
+    console.log('Navbar:astro:before-swap')
+  })
+  document.addEventListener('astro:after-swap', () => {
+    console.log('Navbar:astro:after-swap')
+  })
+  document.addEventListener('astro:page-load', () => {
+    console.log('Navbar:astro:page-load')
+  })
+  document.addEventListener(
+    'astro:page-load:once',
+    () => {
+      console.log('Navbar:astro:page-load:once')
+    },
+    { once: true }
+  )
+</script>

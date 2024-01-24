@@ -1,0 +1,11 @@
+---
+const base = import.meta.env.BASE_URL
+//const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
+const pathname = new URL(Astro.url).pathname.replace(base, '').replace(/\/+$/, '')
+const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
+---
+<div class="btn-group">
+  <a href='/' class={`btn ${currentPath === '' ? 'btn-secondary' : ''}`}><span>/</span></a>
+  <a href='/home' class={`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`}><span>Home</span></a>
+  <a href='/about' class={`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`}><span>About</span></a>
+</div>

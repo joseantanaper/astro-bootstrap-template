@@ -1,51 +1,108 @@
 ---
+import '@style/custom.scss'
+// const storedTheme = Astro.cookies.get('theme')?.value
+const storedTheme = null
+
+import { ViewTransitions, fade } from 'astro:transitions'
+import Navbar from '@components/Navbar.astro'
+import Subnavbar from '@components/Subnavbar.astro'
+
+const base = import.meta.env.BASE_URL
+//const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
+const pathname = new URL(Astro.url).pathname
+  .replace(base, '')
+  .replace(/\/+$/, '')
+const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
+
 interface Props {
-	title: string;
+  title?: string
+  subtitle?: string
+  details?: string
 }
 
-const { title } = Astro.props;
+const { title, subtitle, details } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html
+  lang="en"
+  data-bs-theme={storedTheme}
+  transition:animate={fade({ duration: '100ms' })}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} : {subtitle}</title>
+  </head>
+  <body>
+    <Navbar title="Astro Bootstrap Template" />
+    <Subnavbar title={title} subtitle={subtitle} />
+    <slot />
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <script>
+      console.log('Layout')
+
+      const themeCheck = () => {
+        // OS Theme
+        const mql = window.matchMedia('(prefers-color-scheme: dark)')
+        const osTheme = mql.matches ? 'dark' : 'light'
+        const storedTheme = localStorage.getItem('theme')
+        if (!storedTheme) localStorage.setItem('theme', 'auto')
+        const currentTheme = localStorage.getItem('theme')
+        const newTheme = (currentTheme === 'auto' ? osTheme : currentTheme)!
+        document.documentElement.setAttribute('data-bs-theme', newTheme)
+
+        mql.addEventListener('change', (e) => {
+          document.documentElement.setAttribute(
+            'data-bs-theme',
+            e.matches ? 'dark' : 'light'
+          )
+        })
+      }
+
+      document.addEventListener('astro:before-preparation', () => {
+        console.log('Layout:astro:before-preparation')
+      })
+      document.addEventListener('astro:after-preparation', () => {
+        console.log('Layout:astro:after-preparation')
+      })
+      document.addEventListener('astro:before-swap', () => {
+        console.log('Layout:astro:before-swap')
+        // const storedTheme = localStorage.getItem("theme") || 'light'
+        // document.documentElement.setAttribute("data-bs-theme", storedTheme)
+      })
+      document.addEventListener('astro:after-swap', () => {
+        console.log('Layout:astro:after-swap')
+        // themeCheck()
+      })
+      document.addEventListener('astro:page-load', () => {
+        // const storedTheme = localStorage.getItem("theme") || 'light'
+        // themeCheck()
+        // document.documentElement.setAttribute("data-bs-theme", storedTheme)
+        // console.log("Layout:astro:page-load", storedTheme)
+        themeCheck()
+      })
+
+      document.addEventListener(
+        'astro:page-load',
+        () => {
+          // themeCheck()
+          // const storedTheme = localStorage.getItem("theme") || 'light'
+          // document.getElementById('app-localstorage-theme')!.innerHTML = localStorage.getItem("theme")!
+
+          // document.documentElement.setAttribute("data-bs-theme", storedTheme)
+          console.log('Layout:astro:page-load:once')
+        },
+        { once: true }
+      )
+    </script>
+  </body>
+  <style is:global></style>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
+
