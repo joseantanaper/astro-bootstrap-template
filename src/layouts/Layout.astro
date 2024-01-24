@@ -5,12 +5,12 @@ import { ViewTransitions, fade } from 'astro:transitions'
 // import Navbar from '@components/Navbar.astro'
 // import Subnavbar from '@components/Subnavbar.astro'
 
-const base = import.meta.env.BASE_URL
+// const base = import.meta.env.BASE_URL
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
-const pathname = new URL(Astro.url).pathname
-  .replace(base, '')
-  .replace(/\/+$/, '')
-const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
+// const pathname = new URL(Astro.url).pathname
+//   .replace(base, '')
+//   .replace(/\/+$/, '')
+// const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
 const storedTheme = null
 // const storedTheme = Astro.cookies.get('theme')?.value
 
@@ -20,7 +20,7 @@ interface Props {
   details?: string
 }
 
-const { title, subtitle, details } = Astro.props
+const { title, subtitle } = Astro.props
 ---
 
 <!doctype html>
@@ -36,6 +36,7 @@ const { title, subtitle, details } = Astro.props
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} : {subtitle}</title>
+    <ViewTransitions />
   </head>
   <body>
     <!-- <Navbar title="Astro Bootstrap Template" />
@@ -102,7 +103,7 @@ const { title, subtitle, details } = Astro.props
         { once: true }
       )
     </script>
+    <style is:global></style>
   </body>
-  <style is:global></style>
 </html>
 
