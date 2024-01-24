@@ -4,6 +4,7 @@
     "baseUrl": "D:/DEV/Astro/astro-bootstrap-template",
     "paths": {
       "@/*": ["src/*"],
+      "@layouts/*": ["./src/layouts/*"],
       "@components/*": ["./src/components/*"],
       "@style/*": ["./src/style/*"],
       "@bootstrap-scss/*": ["./node_modules/bootstrap/scss/bootstrap"],
