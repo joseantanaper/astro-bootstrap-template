@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "D:/DEV/Astro/astro-bootstrap-template",
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["src/*"],
       "@layouts/*": ["./src/layouts/*"],
