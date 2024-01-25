@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
+    "@popperjs/core": "^2.11.8",
+    "@types/bootstrap": "^5.2.10",
     "astro": "^4.2.4",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
+    "lorem-ipsum": "^2.0.8",
     "typescript": "^5.3.3"
   },
   "devDependencies": {

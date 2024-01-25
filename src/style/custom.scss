@@ -20,7 +20,10 @@ html {
   // opacity: 0;
 }
 
-// body {}
+body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 html[data-bs-theme='light'],
 html[data-bs-theme='dark'],

@@ -54,9 +54,9 @@ const { title, subtitle } = Astro.props
         const mql = window.matchMedia('(prefers-color-scheme: dark)')
         const osTheme = mql.matches ? 'dark' : 'light'
         const storedTheme = localStorage.getItem('theme')
-        if (!storedTheme) localStorage.setItem('theme', 'auto')
+        if (!storedTheme) localStorage.setItem('theme', 'system')
         const currentTheme = localStorage.getItem('theme')
-        const newTheme = (currentTheme === 'auto' ? osTheme : currentTheme)!
+        const newTheme = (currentTheme === 'system' ? osTheme : currentTheme)!
         document.documentElement.setAttribute('data-bs-theme', newTheme)
 
         mql.addEventListener('change', (e) => {

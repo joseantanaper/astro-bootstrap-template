@@ -1,0 +1,31 @@
+---
+import { loremIpsum } from 'lorem-ipsum'
+interface Props {
+  count?: number
+}
+const { count = 1 } = Astro.props
+let lorem = []
+for (let i = 0; i < count; i++) {
+  lorem.push(
+    loremIpsum({
+      count: 1,
+      format: 'plain',
+      units: 'paragraph',
+      paragraphLowerBound: 8,
+      paragraphUpperBound: 12
+    })
+  )
+}
+---
+
+<div style="text-align: justify">
+  {
+    lorem.map((item) => {
+      return (
+        <>
+          <p>{item}</p>
+        </>
+      )
+    })
+  }
+</div>

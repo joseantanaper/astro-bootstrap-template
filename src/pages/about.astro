@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import LoremIpsum from '@components/widgets/LoremIpsum.astro'
 ---
 
 <Layout title="About" subtitle="About subtitle" details="About details">
-  <main>About content</main>
+  <main>
+    About content
+    <br /><br />
+    <LoremIpsum count={24} />
+  </main>
 </Layout>
 
 <style></style>
