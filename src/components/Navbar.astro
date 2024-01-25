@@ -15,7 +15,7 @@ const { title } = Astro.props
 <header>
   <nav
     id="app-navbar"
-    class="navbar border-bottom navbar-expand-lg fixed-top bg-body-tertiary"
+    class="navbar navbar-expand-lg fixed-top bg-body-tertiary"
   >
     <div class="container-fluid flex-nowrap">
       <!-- <button class="btn btn-danger me-3">#</button> -->
@@ -28,8 +28,8 @@ const { title } = Astro.props
         aria-controls="offcanvasResponsive">#</button
       >
 
-      <a class="navbar-brand" href="#">
-        <!-- {title} -->
+      <a class="navbar-brand text-start w-100" href="#">
+        {title}
       </a>
 
       <div class="d-none d-lg-block justify-content-end" id="app-div-navmenu">
