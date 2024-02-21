@@ -2,11 +2,8 @@ import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  build: {
-    // Default _astro is not working on github pages.
-    assets: 'astro/'
-  },
-  site: 'https://joseantanaper.github.io/',
+  // site: 'https://joseantanaper.github.io/',
+  site: 'http://glistening-dango-c88f0d.netlify.app',
   base: '/astro-bootstrap-template'
 })
 
