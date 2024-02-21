@@ -43,8 +43,9 @@ const { title, subtitle } = Astro.props
     <Subnavbar title={title} subtitle={subtitle} />
     <slot />
 
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-    ></script>
+    <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ></script> -->
+    <script src="@bootstrap-js"></script>
 
     <script>
       console.log('Layout')
