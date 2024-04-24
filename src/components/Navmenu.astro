@@ -1,25 +1,24 @@
 ---
-const base = import.meta.env.BASE_URL
+const baseUrl = import.meta.env.BASE_URL
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
 const pathname = new URL(Astro.url).pathname
-  .replace(base, '')
+  .replace(baseUrl, '')
   .replace(/\/+$/, '')
 const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
 ---
 
 <div class="btn-group">
-  <a
-    href="${import.meta.env.BASE_URL}/"
-    class={`btn ${currentPath === '' ? 'btn-secondary' : ''}`}><span>/</span></a
+  <a href=`${baseUrl}` class=`btn ${currentPath === '' ? 'btn-secondary' : ''}`
+    ><span>/</span></a
   >
   <a
-    href="${import.meta.env.BASE_URL}/aaaa/home"
-    class={`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`}
+    href=`${baseUrl + 'home'}`
+    class=`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`
     ><span>Home</span></a
   >
   <a
-    href="${import.meta.env.BASE_URL}/about"
-    class={`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`}
+    href=`${baseUrl + 'about'}`
+    class=`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`
     ><span>About</span></a
   >
 </div>

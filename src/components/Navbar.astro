@@ -1,9 +1,9 @@
 ---
 import ThemeSelector from '@components/widgets/ThemeSelector.astro'
-const base = import.meta.env.BASE_URL
+const baseUrl = import.meta.env.BASE_URL
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
 const pathname = new URL(Astro.url).pathname
-  .replace(base, '')
+  .replace(baseUrl, '')
   .replace(/\/+$/, '')
 const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
 interface Props {
@@ -38,17 +38,17 @@ const { title } = Astro.props
           <li class="nav-item">
             <div class="btn-group">
               <a
-                href="/"
+                href=`${baseUrl}`
                 class=`btn ${currentPath === '' ? 'btn-secondary' : ''}`
                 ><span>/</span></a
               >
               <a
-                href="/home"
+                href=`${baseUrl + 'home'}`
                 class=`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`
                 ><span>Home</span></a
               >
               <a
-                href="/about"
+                href=`${baseUrl + 'about'}`
                 class=`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`
                 ><span>About</span></a
               >
