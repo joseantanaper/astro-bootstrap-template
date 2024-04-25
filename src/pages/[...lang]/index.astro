@@ -10,12 +10,12 @@ export async function getStaticPaths() {
     {
       lang: 'en',
       title: 'Astro English',
-      text: 'We have lots of products for you'
+      text: 'The selected language is english.'
     },
     {
       lang: 'es',
-      title: 'Astro Spanish',
-      text: 'If you want to learn Astro, you must read this book.'
+      title: 'Astro Español',
+      text: 'El idioma seleccionado es el español.'
     }
   ]
   return pages.map(({ lang, title, text }) => {
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 const { title, text } = Astro.props
 ---
 
-<Layout title="Index" subtitle="Index subtitle" details="Index details">
+<Layout title={title} subtitle={text} details="Index details">
   <main>
     Index SSG: {title} | {text}
     <br /><br />

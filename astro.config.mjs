@@ -8,7 +8,7 @@ export default defineConfig({
       : 'https://joseantanaper.github.io/astro-bootstrap-template/',
   base: import.meta.env.PROD === false ? '/' : '/astro-bootstrap-template/',
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'es',
     locales: ['es', 'en', 'ca'],
     routing: {
       prefixDefaultLocale: true
