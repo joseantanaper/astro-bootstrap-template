@@ -14,6 +14,7 @@ npm install bootstrap-icons
 ```
 
 ## ESLint support
+
 ```sh
 npm install --save-dev eslint eslint-plugin-astro
 npm install --save-dev @typescript-eslint/parser
@@ -22,9 +23,14 @@ npx eslint --init
 ```
 
 ## Prettier support
+
 ```sh
 npm i --save-dev prettier-plugin-astro prettier
 ```
+
+## Internationalization (Static SSG mode)
+
+---
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
@@ -74,3 +80,4 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+

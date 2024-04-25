@@ -1,0 +1,40 @@
+---
+import Layout from '@layouts/Layout.astro'
+export async function getStaticPaths() {
+  const pages = [
+    {
+      lang: undefined,
+      title: 'Astro Default',
+      text: 'Welcome to the Astro store!'
+    },
+    {
+      lang: 'en',
+      title: 'Astro English',
+      text: 'We have lots of products for you'
+    },
+    {
+      lang: 'es',
+      title: 'Astro Spanish',
+      text: 'If you want to learn Astro, you must read this book.'
+    }
+  ]
+  return pages.map(({ lang, title, text }) => {
+    return {
+      params: { lang },
+      props: { title, text }
+    }
+  })
+}
+
+const { title, text } = Astro.props
+---
+
+<Layout title="Index" subtitle="Index subtitle" details="Index details">
+  <main>
+    Index SSG: {title} | {text}
+    <br /><br />
+    Mode: {import.meta.env.MODE}<br />
+    Base url: {import.meta.env.BASE_URL}<br />
+    <br /><br />
+  </main>
+</Layout>

@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
 import ThemeSelector from '@components/widgets/ThemeSelector.astro'
 const baseUrl = import.meta.env.BASE_URL
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
@@ -19,7 +21,7 @@ const { title } = Astro.props
   >
     <div class="container-fluid flex-nowrap">
       <!-- <button class="btn btn-danger me-3">#</button> -->
-
+      {}
       <button
         class="btn btn-primary me-3"
         type="button"
@@ -34,21 +36,23 @@ const { title } = Astro.props
 
       <div class="d-none d-lg-block justify-content-end" id="app-div-navmenu">
         <ul class="navbar-nav">
-          <div class="vr mx-3"></div>
+          <div class="vr mx-3">
+            {baseUrl}
+          </div>
           <li class="nav-item">
             <div class="btn-group">
               <a
-                href=`${baseUrl}`
+                href=`${getRelativeLocaleUrl('es', baseUrl)}`
                 class=`btn ${currentPath === '' ? 'btn-secondary' : ''}`
                 ><span>/</span></a
               >
               <a
-                href=`${baseUrl + 'home'}`
+                href=`${getRelativeLocaleUrl('es', baseUrl + 'home')}`
                 class=`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`
                 ><span>Home</span></a
               >
               <a
-                href=`${baseUrl + 'about'}`
+                href=`${getRelativeLocaleUrl('es', baseUrl + 'about')}`
                 class=`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`
                 ><span>About</span></a
               >

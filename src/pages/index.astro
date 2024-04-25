@@ -1,20 +1,5 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import LoremIpsum from '@components/widgets/LoremIpsum.astro'
 ---
 
-<Layout title="Index" subtitle="Index subtitle" details="Index details">
-  <main>
-    Index content
-    <br /><br />
-    {import.meta.env.MODE} |
-    {import.meta.env.BASE_URL}
-    <br /><br />
-    <LoremIpsum count={3} />
-  </main>
-</Layout>
-
-<style></style>
-
-<script></script>
-
+<Layout title="Root" subtitle="Root subtitle" details="Root details" />
