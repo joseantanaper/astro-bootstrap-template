@@ -12,11 +12,20 @@ const globalService = {
   getStoredLocale: () => {
     return localStorage.getItem('locale') ?? 'es'
   },
+
   test: (label: string) => {
     console.log('globalService', 'test', label)
   },
-  getPathLocale: (url: string) => {
+
+  currentPathLocale: (url: string) => {
     return import.meta.env.DEV ? url.split('/')[1] : url.split('/')[2]
+  },
+  currentPath: (url: string) => {
+    return import.meta.env.DEV ? url.split('/')[2] : url.split('/')[3]
+    // return url
+    //   .replace(import.meta.env.BASE_URL, '')
+    //   .replace(/\/+$/, '')
+    //   .split('/')[1]
   }
 }
 

@@ -1,6 +1,5 @@
 ---
 const currentLocale = Astro.currentLocale || ''
-import { globalService } from '@service/global.ts'
 ---
 
 <astro-locale-selector>
@@ -24,7 +23,7 @@ import { globalService } from '@service/global.ts'
 </astro-locale-selector>
 
 <script>
-  import { globalService } from '@/src/service/global'
+  import { globalService } from '@service/global'
 
   class AstroLocaleSelector extends HTMLElement {
     constructor() {
@@ -36,7 +35,7 @@ import { globalService } from '@service/global.ts'
         window.location.pathname.split('/')
       )
 
-      const currentLocale = globalService.getPathLocale(
+      const currentPathLocale = globalService.currentPathLocale(
         window.location.pathname
       )
       const btnCa = this.querySelector('button[name="app-btn-locale-ca"]')
@@ -45,19 +44,19 @@ import { globalService } from '@service/global.ts'
 
       btnCa?.addEventListener('click', () => {
         window.location.replace(
-          window.location.pathname.replace(`/${currentLocale}/`, '/ca/')
+          window.location.pathname.replace(`/${currentPathLocale}/`, '/ca/')
         )
         globalService.storeLocale('ca')
       })
       btnEs?.addEventListener('click', () => {
         window.location.replace(
-          window.location.pathname.replace(`/${currentLocale}/`, '/es/')
+          window.location.pathname.replace(`/${currentPathLocale}/`, '/es/')
         )
         globalService.storeLocale('es')
       })
       btnEn?.addEventListener('click', () => {
         window.location.replace(
-          window.location.pathname.replace(`/${currentLocale}/`, '/en/')
+          window.location.pathname.replace(`/${currentPathLocale}/`, '/en/')
         )
         globalService.storeLocale('en')
       })

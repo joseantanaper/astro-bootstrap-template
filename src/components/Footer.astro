@@ -1,6 +1,10 @@
 ---
 import { globalService } from '@service/global'
-import LocaleSelector from './widgets/LocaleSelector.astro'
+import LocaleSelector from '@components/widgets/LocaleSelector.astro'
+const currentPathLocale = globalService.currentPathLocale(
+  new URL(Astro.url).pathname
+)
+const currentPath = globalService.currentPath(new URL(Astro.url).pathname)
 ---
 
 <footer>
@@ -11,15 +15,15 @@ import LocaleSelector from './widgets/LocaleSelector.astro'
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
       <div class="col">This is the footer</div>
       <div class="col">
         Mode: {import.meta.env.MODE}<br />
         Base url: {import.meta.env.BASE_URL}<br />
-        Current locale: {Astro.currentLocale}<br />
+        currentPathname: {currentPath}<br />
+        currentPathLocale: {currentPathLocale}<br />
         Preferred locale: {Astro.preferredLocale}<br />
         Preferred locale list: {Astro.preferredLocaleList}<br />
-        Path locale: {globalService.getPathLocale(Astro.url.pathname)}
       </div>
       <div class="col text-end">
         <LocaleSelector />

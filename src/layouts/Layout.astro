@@ -1,19 +1,21 @@
 ---
 import '@style/custom.scss'
-import { getImage } from 'astro:assets'
-import favicon from '../image/favicon.svg'
-const faviconSvg = await getImage({ src: favicon, format: 'svg' })
 import { ViewTransitions, fade } from 'astro:transitions'
 import Navbar from '@components/Navbar.astro'
 import Subnavbar from '@components/Subnavbar.astro'
 import Footer from '@components/Footer.astro'
+import { globalService } from '../service/global'
 
-const base = import.meta.env.BASE_URL
+// For favicon work on Github pages
+import { getImage } from 'astro:assets'
+import favicon from '@image/favicon.svg'
+const faviconSvg = await getImage({ src: favicon, format: 'svg' })
+
+// const base = import.meta.env.BASE_URL
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
-const pathname = new URL(Astro.url).pathname
-  .replace(base, '')
-  .replace(/\/+$/, '')
-// const currentPath = pathname.substring(pathname.lastIndexOf('/') + 1)
+// const currentPathname = globalService.currentPathname(
+//   new URL(Astro.url).pathname
+// )
 const storedTheme = null
 // const storedTheme = Astro.cookies.get('theme')?.value
 
@@ -36,10 +38,6 @@ const { title, subtitle } = Astro.props
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg?" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg?" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg?" />
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg?" />
     <link rel="icon" type="image/svg+xml" href={faviconSvg.src} />
     <meta name="generator" content={Astro.generator} />
     <title>{title} : {subtitle}</title>
