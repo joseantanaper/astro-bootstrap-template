@@ -1,5 +1,6 @@
 ---
 import ThemeSelector from '@components/widgets/ThemeSelector.astro'
+import LocaleSelector from '@/src/components/widgets/LocaleSelector.astro'
 
 interface Props {
   title?: string
@@ -21,6 +22,11 @@ const { title, subtitle } = Astro.props
 
     <div class="d-none d-lg-block justify-content-end" id="app-div-subnavbar">
       <ul class="navbar-nav">
+        <div class="vr mx-3"></div>
+
+        <li class="nav-item">
+          <LocaleSelector />
+        </li>
         <div class="vr mx-3"></div>
 
         <li class="nav-item">

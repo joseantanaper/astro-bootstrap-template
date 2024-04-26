@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n'
 
 import ThemeSelector from '@components/widgets/ThemeSelector.astro'
+import LocaleSelector from '@/src/components/widgets/LocaleSelector.astro'
 const baseUrl = import.meta.env.BASE_URL
 const currentLocale = Astro.currentLocale || ''
 //const pathname = new URL(Astro.url).pathname.replace(/^\/+/, '').replace(/\/+$/, '')
@@ -40,16 +41,6 @@ const { title } = Astro.props
           <div class="vr mx-3"></div>
 
           <li class="nav-item">
-            <a class="nav-link">
-              baseUrl: <strong>{baseUrl}</strong> ; currentPath: <strong
-                >{pathname}</strong
-              >
-            </a>
-          </li>
-
-          <div class="vr mx-3"></div>
-
-          <li class="nav-item">
             <div class="btn-group">
               <a
                 href=`${getRelativeLocaleUrl(currentLocale, baseUrl)}`
@@ -68,6 +59,10 @@ const { title } = Astro.props
               >
             </div>
           </li>
+
+          <div class="vr mx-3"></div>
+
+          <li class="nav-item"><LocaleSelector /></li>
 
           <div class="vr mx-3"></div>
 
@@ -119,6 +114,16 @@ const { title } = Astro.props
   })
   document.addEventListener('astro:page-load', () => {
     console.log('Navbar:astro:page-load')
+    document
+      .getElementById('app-navbar-btn-language-es')
+      ?.addEventListener('click', () => {})
+    document
+      .getElementById('app-navbar-btn-language-en')
+      ?.addEventListener('click', () => {
+        window.location.replace(
+          window.location.pathname.replace('/es/', '/en/')
+        )
+      })
   })
   document.addEventListener(
     'astro:page-load:once',

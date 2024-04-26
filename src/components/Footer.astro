@@ -1,0 +1,29 @@
+---
+import { globalService } from '@service/global'
+import LocaleSelector from './widgets/LocaleSelector.astro'
+---
+
+<footer>
+  <div class="container-fluid flex-nowrap">
+    <div class="row">
+      <div class="col">
+        <hr />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">This is the footer</div>
+      <div class="col">
+        Mode: {import.meta.env.MODE}<br />
+        Base url: {import.meta.env.BASE_URL}<br />
+        Current locale: {Astro.currentLocale}<br />
+        Preferred locale: {Astro.preferredLocale}<br />
+        Preferred locale list: {Astro.preferredLocaleList}<br />
+        Path locale: {Astro.url.pathname.split('/')[1] || ''}
+      </div>
+      <div class="col text-end">
+        <LocaleSelector />
+      </div>
+    </div>
+  </div>
+</footer>

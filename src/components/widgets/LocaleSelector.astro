@@ -1,0 +1,66 @@
+---
+const currentLocale = Astro.currentLocale || ''
+import { globalService } from '@service/global.ts'
+---
+
+<astro-locale-selector>
+  <div class="btn-group">
+    <button
+      name="app-btn-locale-ca"
+      class="btn btn-success"
+      disabled={currentLocale == 'ca'}>CA</button
+    >
+    <button
+      name="app-btn-locale-es"
+      class="btn btn-success"
+      disabled={currentLocale == 'es'}>ES</button
+    >
+    <button
+      name="app-btn-locale-en"
+      class="btn btn-success"
+      disabled={currentLocale == 'en'}>EN</button
+    >
+  </div>
+</astro-locale-selector>
+
+<script>
+  import { globalService } from '@/src/service/global'
+
+  class AstroLocaleSelector extends HTMLElement {
+    constructor() {
+      super()
+
+      console.log(
+        'LocaleSelector',
+        'constructor',
+        window.location.pathname.split('/')
+      )
+
+      const currentLocale = window.location.pathname.split('/')[1]
+      const btnCa = this.querySelector('button[name="app-btn-locale-ca"]')
+      const btnEs = this.querySelector('button[name="app-btn-locale-es"]')
+      const btnEn = this.querySelector('button[name="app-btn-locale-en"]')
+
+      btnCa?.addEventListener('click', () => {
+        window.location.replace(
+          window.location.pathname.replace(`/${currentLocale}/`, '/ca/')
+        )
+        globalService.storeLocale('ca')
+      })
+      btnEs?.addEventListener('click', () => {
+        window.location.replace(
+          window.location.pathname.replace(`/${currentLocale}/`, '/es/')
+        )
+        globalService.storeLocale('es')
+      })
+      btnEn?.addEventListener('click', () => {
+        window.location.replace(
+          window.location.pathname.replace(`/${currentLocale}/`, '/en/')
+        )
+        globalService.storeLocale('en')
+      })
+    }
+  }
+  // Tell the browser to use our AstroLocaleSelector class for <astro-locale-selector> elements.
+  customElements.define('astro-locale-selector', AstroLocaleSelector)
+</script>
