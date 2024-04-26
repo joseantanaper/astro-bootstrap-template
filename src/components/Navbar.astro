@@ -43,7 +43,7 @@ const { title } = Astro.props
           <li class="nav-item">
             <div class="btn-group">
               <a
-                href=`${getRelativeLocaleUrl(currentLocale, baseUrl)}`
+                href=`${getRelativeLocaleUrl(currentLocale, '')}`
                 class=`btn ${currentPath === '' ? 'btn-secondary' : ''}`
                 ><span>/</span></a
               >
