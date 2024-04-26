@@ -96,8 +96,6 @@ const { outline = false, label = false } = Astro.props
       const btnDark = this.querySelector('button[name="app-btn-dark"]')
       const btnSystem = this.querySelector('button[name="app-btn-system"]')
 
-      const storedTheme = globalService.getStoredTheme()
-
       const setTheme = (theme: string, storeTheme?: string) => {
         document.documentElement.setAttribute('data-bs-theme', theme)
         globalService.storeTheme(storeTheme ?? theme)
@@ -123,7 +121,7 @@ const { outline = false, label = false } = Astro.props
 
   const disableButtons = (theme?: string) => {
     // Global for all ThemeSelector instances
-    const storedTheme = theme ?? localStorage.getItem('theme') ?? 'system'
+    const storedTheme = globalService.getStoredTheme()
     document
       .querySelectorAll('button[name="app-btn-light"]')
       .forEach((button) => {
