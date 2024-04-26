@@ -36,9 +36,9 @@ import { globalService } from '@service/global.ts'
         window.location.pathname.split('/')
       )
 
-      const currentLocale = import.meta.env.DEV
-        ? window.location.pathname.split('/')[1]
-        : window.location.pathname.split('/')[2]
+      const currentLocale = globalService.getPathLocale(
+        window.location.pathname
+      )
       const btnCa = this.querySelector('button[name="app-btn-locale-ca"]')
       const btnEs = this.querySelector('button[name="app-btn-locale-es"]')
       const btnEn = this.querySelector('button[name="app-btn-locale-en"]')

@@ -14,6 +14,9 @@ const globalService = {
   },
   test: (label: string) => {
     console.log('globalService', 'test', label)
+  },
+  getPathLocale: (url: string) => {
+    return import.meta.env.DEV ? url.split('/')[1] : url.split('/')[2]
   }
 }
 

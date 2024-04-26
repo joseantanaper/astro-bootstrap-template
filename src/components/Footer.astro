@@ -19,7 +19,7 @@ import LocaleSelector from './widgets/LocaleSelector.astro'
         Current locale: {Astro.currentLocale}<br />
         Preferred locale: {Astro.preferredLocale}<br />
         Preferred locale list: {Astro.preferredLocaleList}<br />
-        Path locale: {Astro.url.pathname.split('/')[1] || ''}
+        Path locale: {globalService.getPathLocale(Astro.url.pathname)}
       </div>
       <div class="col text-end">
         <LocaleSelector />
