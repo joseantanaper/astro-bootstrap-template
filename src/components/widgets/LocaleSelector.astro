@@ -1,25 +1,70 @@
 ---
-const currentLocale = Astro.currentLocale || ''
+import { globalService } from '@service/global.ts'
+const currentPathLocale = globalService.currentPathLocale(
+  new URL(Astro.url).pathname
+)
+interface Props {
+  mode?: 0 | 1
+  label?: boolean
+}
+const { mode = 0, label = false } = Astro.props
 ---
 
 <astro-locale-selector>
-  <div class="btn-group">
-    <button
-      name="app-btn-locale-ca"
-      class="btn btn-success"
-      disabled={currentLocale == 'ca'}>CA</button
-    >
-    <button
-      name="app-btn-locale-es"
-      class="btn btn-success"
-      disabled={currentLocale == 'es'}>ES</button
-    >
-    <button
-      name="app-btn-locale-en"
-      class="btn btn-success"
-      disabled={currentLocale == 'en'}>EN</button
-    >
-  </div>
+  {
+    mode === 0 ? (
+      <div class="btn-group">
+        <button
+          name="app-btn-locale-ca"
+          class="btn btn-success"
+          disabled={currentPathLocale == 'ca'}
+        >
+          CA
+        </button>
+        <button
+          name="app-btn-locale-es"
+          class="btn btn-success"
+          disabled={currentPathLocale == 'es'}
+        >
+          ES
+        </button>
+        <button
+          name="app-btn-locale-en"
+          class="btn btn-success"
+          disabled={currentPathLocale == 'en'}
+        >
+          EN
+        </button>
+      </div>
+    ) : (
+      <div class="btn-group">
+        Idioma:
+        <a
+          href=""
+          name="app-btn-locale-ca"
+          class={currentPathLocale === 'ca' ? 'disabled' : ''}
+        >
+          Català
+        </a>
+        &nbsp;|&nbsp;
+        <a
+          href=""
+          name="app-btn-locale-es"
+          class={currentPathLocale === 'es' ? 'disabled' : ''}
+        >
+          Español
+        </a>
+        &nbsp;|&nbsp;
+        <a
+          href=""
+          name="app-btn-locale-en"
+          class={currentPathLocale === 'en' ? 'disabled' : ''}
+        >
+          English
+        </a>
+      </div>
+    )
+  }
 </astro-locale-selector>
 
 <script>
@@ -38,14 +83,21 @@ const currentLocale = Astro.currentLocale || ''
       const currentPathLocale = globalService.currentPathLocale(
         window.location.pathname
       )
-      const btnCa = this.querySelector('button[name="app-btn-locale-ca"]')
-      const btnEs = this.querySelector('button[name="app-btn-locale-es"]')
-      const btnEn = this.querySelector('button[name="app-btn-locale-en"]')
+      const btnCa = this.querySelector(
+        'button[name="app-btn-locale-ca"],a[name="app-btn-locale-ca"]'
+      )
+      const btnEs = this.querySelector(
+        'button[name="app-btn-locale-es"],a[name="app-btn-locale-es"]'
+      )
+      const btnEn = this.querySelector(
+        'button[name="app-btn-locale-en"],a[name="app-btn-locale-en"]'
+      )
 
       btnCa?.addEventListener('click', () => {
-        window.location.replace(
-          window.location.pathname.replace(`/${currentPathLocale}/`, '/ca/')
-        )
+        currentPathLocale !== 'ca' &&
+          window.location.replace(
+            window.location.pathname.replace(`/${currentPathLocale}/`, '/ca/')
+          )
         globalService.storeLocale('ca')
       })
       btnEs?.addEventListener('click', () => {
