@@ -48,12 +48,12 @@ const { title } = Astro.props
                 ><span>/</span></a
               >
               <a
-                href=`${getRelativeLocaleUrl(currentLocale, baseUrl + 'home')}`
+                href=`${getRelativeLocaleUrl(currentLocale, 'home')}`
                 class=`btn ${currentPath === 'home' ? 'btn-secondary' : ''}`
                 ><span>Home</span></a
               >
               <a
-                href=`${getRelativeLocaleUrl(currentLocale, baseUrl + 'about')}`
+                href=`${getRelativeLocaleUrl(currentLocale, 'about')}`
                 class=`btn ${currentPath === 'about' ? 'btn-secondary' : ''}`
                 ><span>About</span></a
               >
